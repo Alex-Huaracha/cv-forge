@@ -1,25 +1,13 @@
-import { useState } from 'react';
 import './PersonalInfo.css';
 
-export function PersonalInfo() {
-  const [formData, setFormData] = useState({
-    firstName: 'Alex',
-    lastName: 'Huaracha',
-    email: 'alex@example.com',
-    phone: '+51 999 999 999',
-    linkedin: 'linkedin.com/in/alex-huaracha/',
-    github: 'github.com/Alex-Huaracha',
-    portfolio: 'yourwebsite.dev',
-  });
-
+export function PersonalInfo({ data, onChange }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
+    onChange({
+      ...data,
       [name]: value,
-    }));
+    });
   };
-
   return (
     <div className="personal-info">
       <div className="form-grid">
@@ -29,7 +17,7 @@ export function PersonalInfo() {
             type="text"
             id="firstName"
             name="firstName"
-            value={formData.firstName}
+            value={data.firstName}
             onChange={handleInputChange}
             required
           />
@@ -40,7 +28,7 @@ export function PersonalInfo() {
             type="text"
             id="lastName"
             name="lastName"
-            value={formData.lastName}
+            value={data.lastName}
             onChange={handleInputChange}
             required
           />
@@ -51,7 +39,7 @@ export function PersonalInfo() {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
+            value={data.email}
             onChange={handleInputChange}
             required
           />
@@ -62,7 +50,7 @@ export function PersonalInfo() {
             type="tel"
             id="phone"
             name="phone"
-            value={formData.phone}
+            value={data.phone}
             onChange={handleInputChange}
           />
         </div>
@@ -72,7 +60,7 @@ export function PersonalInfo() {
             type="url"
             id="linkedin"
             name="linkedin"
-            value={formData.linkedin}
+            value={data.linkedin}
             onChange={handleInputChange}
             placeholder="https://linkedin.com/in/username"
           />
@@ -83,7 +71,7 @@ export function PersonalInfo() {
             type="url"
             id="github"
             name="github"
-            value={formData.github}
+            value={data.github}
             onChange={handleInputChange}
             placeholder="https://github.com/username"
           />
@@ -94,7 +82,7 @@ export function PersonalInfo() {
             type="url"
             id="portfolio"
             name="portfolio"
-            value={formData.portfolio}
+            value={data.portfolio}
             onChange={handleInputChange}
             placeholder="https://yourwebsite.com"
           />
