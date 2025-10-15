@@ -1,16 +1,19 @@
 :root {
   /* Colors */
   --bg-primary: #242424;
-  --bg-secondary: #2d2d2d;
+  --bg-secondary: #393939;
 
   /* Text color */
   --text-color: #ffffffeb;
+
+  /* Text Button color */
+  --text-button: #81e6d9;
 
   /* Button Color */
   --button-bg: #81e6d9;
 
   /* Link Color */
-  --link-color: #ff63c3;
+  --link-color: #555555;
 }
 
 body {
