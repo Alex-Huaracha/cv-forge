@@ -1,5 +1,6 @@
 #root {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   max-width: 100%;
@@ -9,4 +10,33 @@
 .header {
   padding: 1rem 2rem;
   text-align: center;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem 2rem;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+.footer-link {
+  color: var(--link-color);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}
+
+.footer-link .icon {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.icon {
+  color: white;
 }
