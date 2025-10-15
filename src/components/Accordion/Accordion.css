@@ -39,8 +39,9 @@
   background: var(--bg-secondary);
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.3s ease, padding 0.3s ease; /* ← Anima ambos */
   box-sizing: border-box;
+  padding: 0 1rem;
 }
 
 .accordion-content.open {
