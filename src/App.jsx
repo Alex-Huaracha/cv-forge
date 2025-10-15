@@ -1,7 +1,32 @@
+import { useState } from 'react';
 import './App.css';
-import { Accordion, PersonalInfo } from './components';
+import { Accordion, PersonalInfo, ProfileSummary } from './components';
 
 function App() {
+  const [data, setData] = useState({
+    personalInfo: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
+      portfolio: '',
+    },
+    profileSummary: '',
+    education: [],
+    experience: [],
+    skills: [],
+    projects: [],
+  });
+
+  const updateData = (section, data) => {
+    setData((prev) => ({
+      ...prev,
+      [section]: data,
+    }));
+  };
+
   return (
     <>
       {/* Header */}
@@ -17,7 +42,18 @@ function App() {
             title="Personal Information"
             defaultOpen={true}
           >
-            <PersonalInfo />
+            <PersonalInfo
+              data={data.personalInfo}
+              onChange={(data) => updateData('personalInfo', data)}
+            />
+          </Accordion>
+
+          {/* accordion sumary */}
+          <Accordion icon="summary" title="Profile Summary">
+            <ProfileSummary
+              data={data.profileSummary}
+              onChange={(data) => updateData('profileSummary', data)}
+            />
           </Accordion>
         </div>
 
