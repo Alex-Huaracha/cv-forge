@@ -1,4 +1,5 @@
 import './App.css';
+import { Accordion, PersonalInfo } from './components';
 
 function App() {
   return (
@@ -8,7 +9,22 @@ function App() {
         <h2>CV Forge</h2>
         <p>Your CV quickly and easily</p>
       </header>
+      {/* Main */}
+      <div className="cv-container">
+        <div className="cv-editor">
+          <Accordion
+            icon="person"
+            title="Personal Information"
+            defaultOpen={true}
+          >
+            <PersonalInfo />
+          </Accordion>
+        </div>
 
+        <div className="cv-preview">
+          {/* <CVPreview personalInfo={personalData} /> */}
+        </div>
+      </div>
       {/* Footer */}
       <footer className="footer">
         <p>
