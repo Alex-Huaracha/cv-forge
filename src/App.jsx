@@ -7,23 +7,61 @@ function App() {
     personalInfo: {
       firstName: '',
       lastName: '',
-      email: '',
       phone: '',
+      email: '',
       linkedin: '',
       github: '',
       portfolio: '',
     },
-    profileSummary: '',
-    education: [],
-    experience: [],
-    skills: [],
-    projects: [],
+
+    education: [
+      {
+        id: crypto.randomUUID(),
+        university: '',
+        degree: '',
+        descriptions: [''],
+        startDate: '',
+        endDate: '',
+        location: '',
+      },
+    ],
+
+    workExperience: [
+      {
+        id: crypto.randomUUID(),
+        company: '',
+        position: '',
+        descriptions: [''],
+        startDate: '',
+        endDate: '',
+        location: '',
+      },
+    ],
+
+    projects: [
+      {
+        id: crypto.randomUUID(),
+        name: '',
+        website: '',
+        sourceCode: '',
+        descriptions: [''],
+        technologies: '',
+      },
+    ],
+
+    technicalSkills: [
+      {
+        id: crypto.randomUUID(),
+        title: '',
+        skills: '',
+      },
+    ],
   });
 
-  const updateData = (section, data) => {
-    setData((prev) => ({
-      ...prev,
-      [section]: data,
+  const handleSectionUpdate = (section, newData) => {
+    setData((prevData) => ({
+      ...prevData,
+      [section]: newData,
     }));
   };
 
@@ -44,15 +82,14 @@ function App() {
           >
             <PersonalInfo
               data={data.personalInfo}
-              onChange={(data) => updateData('personalInfo', data)}
+              // onChange={(data) => updateData('personalInfo', data)}
             />
           </Accordion>
 
-          {/* accordion sumary */}
           <Accordion icon="summary" title="Profile Summary">
             <ProfileSummary
               data={data.profileSummary}
-              onChange={(data) => updateData('profileSummary', data)}
+              // onChange={(data) => updateData('profileSummary', data)}
             />
           </Accordion>
         </div>
