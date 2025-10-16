@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { Accordion, PersonalInfo, ProfileSummary } from './components';
+import { AccordionSection, PersonalInfo, ProfileSummary } from './components';
 
 function App() {
   const [data, setData] = useState({
@@ -75,7 +75,7 @@ function App() {
       {/* Main */}
       <div className="cv-container">
         <div className="cv-editor">
-          <Accordion
+          <AccordionSection
             icon="person"
             title="Personal Information"
             defaultOpen={true}
@@ -84,14 +84,14 @@ function App() {
               data={data.personalInfo}
               // onChange={(data) => updateData('personalInfo', data)}
             />
-          </Accordion>
+          </AccordionSection>
 
-          <Accordion icon="summary" title="Profile Summary">
+          <AccordionSection icon="summary" title="Profile Summary">
             <ProfileSummary
               data={data.profileSummary}
               // onChange={(data) => updateData('profileSummary', data)}
             />
-          </Accordion>
+          </AccordionSection>
         </div>
 
         <div className="cv-preview">
