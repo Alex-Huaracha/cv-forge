@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import './App.css';
-import { AccordionSection, PersonalInfo } from './components';
+import {
+  AccordionSection,
+  PersonalInfo,
+  ExperienceSection,
+} from './components';
 
 function App() {
   const [data, setData] = useState({
@@ -66,6 +70,23 @@ function App() {
     console.log(`Updated ${section}:`, newData);
   };
 
+  const educationFields = [
+    { name: 'university', label: 'University/School', type: 'text' },
+    { name: 'degree', label: 'Degree/Title', type: 'text' },
+    { name: 'descriptions', label: 'Descriptions', type: 'textarea' },
+    { name: 'startDate', label: 'Start Date', type: 'text' },
+    { name: 'endDate', label: 'End Date', type: 'text' },
+    { name: 'location', label: 'Location', type: 'text' },
+  ];
+
+  // const workFields = [
+  //   { name: 'company', label: 'Company', type: 'text' },
+  //   { name: 'position', label: 'Position Title', type: 'text' },
+  //   { name: 'startDate', label: 'Start Date', type: 'text' },
+  //   { name: 'endDate', label: 'End Date', type: 'text' },
+  //   { name: 'location', label: 'Location', type: 'text' },
+  // ];
+
   return (
     <>
       {/* Header */}
@@ -76,6 +97,7 @@ function App() {
       {/* Main */}
       <div className="cv-container">
         <div className="cv-editor">
+          {/* Personal Information */}
           <AccordionSection
             icon="person"
             title="Personal Information"
@@ -86,6 +108,25 @@ function App() {
               onChange={(newData) =>
                 handleSectionUpdate('personalInfo', newData)
               }
+            />
+          </AccordionSection>
+          {/* Education */}
+          <AccordionSection icon="education" title="Education">
+            <ExperienceSection
+              items={data.education}
+              onUpdateItems={(updated) =>
+                handleSectionUpdate('education', updated)
+              }
+              initialItemData={{
+                id: '',
+                university: '',
+                degree: '',
+                startDate: '',
+                endDate: '',
+                location: '',
+              }}
+              fields={educationFields}
+              sectionTitle="Education"
             />
           </AccordionSection>
         </div>
