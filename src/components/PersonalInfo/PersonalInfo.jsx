@@ -9,7 +9,7 @@ export function PersonalInfo({ data, onChange }) {
     });
   };
   return (
-    <div className="personal-info">
+    <form className="personal-info">
       <div className="form-grid">
         <div className="form-group">
           <label htmlFor="firstName">First Name *</label>
@@ -88,6 +88,6 @@ export function PersonalInfo({ data, onChange }) {
           />
         </div>
       </div>
-    </div>
+    </form>
   );
 }

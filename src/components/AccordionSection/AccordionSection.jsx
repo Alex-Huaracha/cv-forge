@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import './AccordionSection.css';
 
-export function Accordion({ icon, title, children, defaultOpen = false }) {
+export function AccordionSection({
+  icon,
+  title,
+  children,
+  defaultOpen = false,
+}) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (

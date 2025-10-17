@@ -63,6 +63,7 @@ function App() {
       ...prevData,
       [section]: newData,
     }));
+    console.log(newData);
   };
 
   return (
@@ -82,7 +83,7 @@ function App() {
           >
             <PersonalInfo
               data={data.personalInfo}
-              // onChange={(data) => updateData('personalInfo', data)}
+              onChange={(data) => handleSectionUpdate('personalInfo', data)}
             />
           </AccordionSection>
 
