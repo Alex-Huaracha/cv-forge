@@ -9,7 +9,7 @@
 
 .accordion-header {
   width: 100%;
-  padding: 1rem;
+  padding: 0.9rem;
   background: transparent;
   border: none;
   color: var(--text-button);
@@ -29,6 +29,7 @@
 .accordion-header h3 {
   margin: 0;
   font-weight: 500;
+  font-size: var(--font-size-base);
 }
 
 .accordion-header:hover {
