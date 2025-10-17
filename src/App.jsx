@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { AccordionSection, PersonalInfo, ProfileSummary } from './components';
+import { AccordionSection, PersonalInfo } from './components';
 
 function App() {
   const [data, setData] = useState({
@@ -63,7 +63,7 @@ function App() {
       ...prevData,
       [section]: newData,
     }));
-    console.log(newData);
+    console.log(`Updated ${section}:`, newData);
   };
 
   return (
@@ -83,14 +83,9 @@ function App() {
           >
             <PersonalInfo
               data={data.personalInfo}
-              onChange={(data) => handleSectionUpdate('personalInfo', data)}
-            />
-          </AccordionSection>
-
-          <AccordionSection icon="summary" title="Profile Summary">
-            <ProfileSummary
-              data={data.profileSummary}
-              // onChange={(data) => updateData('profileSummary', data)}
+              onChange={(newData) =>
+                handleSectionUpdate('personalInfo', newData)
+              }
             />
           </AccordionSection>
         </div>

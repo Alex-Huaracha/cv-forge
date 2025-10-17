@@ -39,6 +39,7 @@ export function PersonalInfo({ data, onChange }) {
             type="email"
             id="email"
             name="email"
+            autocomplete="email"
             value={data.email}
             onChange={handleInputChange}
             required
@@ -50,6 +51,7 @@ export function PersonalInfo({ data, onChange }) {
             type="tel"
             id="phone"
             name="phone"
+            autocomplete="tel"
             value={data.phone}
             onChange={handleInputChange}
           />
