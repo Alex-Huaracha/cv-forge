@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { AccordionItem } from '../AccordionItem/AccordionItem';
 import './ExperienceSection.css';
 
@@ -9,9 +10,12 @@ export function ExperienceSection({
   sectionTitle,
   getTitleFromItem,
 }) {
+  const [openItemId, setOpenItemId] = useState(items[0]?.id || null);
+
   const handleAdd = () => {
     const newItem = { ...initialItemData, id: crypto.randomUUID() };
     onUpdateItems([...items, newItem]);
+    setOpenItemId(newItem.id);
   };
 
   const handleChange = (id, fieldName, value) => {
@@ -24,6 +28,13 @@ export function ExperienceSection({
   const handleDelete = (id) => {
     const filteredItems = items.filter((item) => item.id !== id);
     onUpdateItems(filteredItems);
+    if (openItemId === id) {
+      setOpenItemId(null);
+    }
+  };
+
+  const handleToggle = (id) => {
+    setOpenItemId(openItemId === id ? null : id);
   };
 
   return (
@@ -32,6 +43,8 @@ export function ExperienceSection({
         <AccordionItem
           key={item.id}
           title={getTitleFromItem(item)}
+          isOpen={openItemId === item.id}
+          onToggle={() => handleToggle(item.id)}
           onDelete={() => handleDelete(item.id)}
         >
           {fields.map((field) => (

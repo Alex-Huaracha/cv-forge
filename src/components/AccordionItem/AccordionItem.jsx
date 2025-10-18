@@ -1,20 +1,22 @@
-import { useState } from 'react';
 import './AccordionItem.css';
 
 export function AccordionItem({
   title,
+  isOpen = true,
   onDelete,
-  defaultOpen = true,
+  onToggle,
   children,
 }) {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
+  const handleToggle = () => {
+    onToggle?.();
+  };
 
   return (
     <div className="accordion-item">
       <div className="accordion-item-header">
         <button
           className="accordion-toggle"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={handleToggle}
           aria-expanded={isOpen}
         >
           <span className="item-title">{title || 'New Entry'}</span>

@@ -120,9 +120,6 @@ function App() {
           <AccordionSection icon="education" title="Education">
             <ExperienceSection
               items={data.education}
-              onUpdateItems={(updated) =>
-                handleSectionUpdate('education', updated)
-              }
               initialItemData={{
                 id: '',
                 university: '',
@@ -134,6 +131,9 @@ function App() {
               }}
               fields={educationFields}
               sectionTitle="Education"
+              onUpdateItems={(newData) =>
+                handleSectionUpdate('education', newData)
+              }
               getTitleFromItem={getEducationTitle}
             />
           </AccordionSection>
