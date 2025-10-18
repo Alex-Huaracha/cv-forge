@@ -71,13 +71,17 @@ function App() {
   };
 
   const educationFields = [
-    { name: 'university', label: 'University/School', type: 'text' },
-    { name: 'degree', label: 'Degree/Title', type: 'text' },
-    { name: 'descriptions', label: 'Descriptions', type: 'textarea' },
+    { name: 'university', label: 'School', type: 'text' },
+    { name: 'degree', label: 'Course', type: 'text' },
+    { name: 'descriptions', label: 'Description', type: 'textarea' },
     { name: 'startDate', label: 'Start Date', type: 'text' },
     { name: 'endDate', label: 'End Date', type: 'text' },
     { name: 'location', label: 'Location', type: 'text' },
   ];
+
+  const getEducationTitle = (item) => {
+    return item.university || item.degree || 'New Education';
+  };
 
   // const workFields = [
   //   { name: 'company', label: 'Company', type: 'text' },
@@ -86,6 +90,8 @@ function App() {
   //   { name: 'endDate', label: 'End Date', type: 'text' },
   //   { name: 'location', label: 'Location', type: 'text' },
   // ];
+
+  console.log('Current CV Data:', data.education);
 
   return (
     <>
@@ -121,12 +127,14 @@ function App() {
                 id: '',
                 university: '',
                 degree: '',
+                description: '',
                 startDate: '',
                 endDate: '',
                 location: '',
               }}
               fields={educationFields}
               sectionTitle="Education"
+              getTitleFromItem={getEducationTitle}
             />
           </AccordionSection>
         </div>

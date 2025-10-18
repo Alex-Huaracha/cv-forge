@@ -1,4 +1,4 @@
-import { ExperienceItem } from './../../components';
+import { AccordionItem } from '../AccordionItem/AccordionItem';
 import './ExperienceSection.css';
 
 export function ExperienceSection({
@@ -7,6 +7,7 @@ export function ExperienceSection({
   initialItemData,
   fields,
   sectionTitle,
+  getTitleFromItem,
 }) {
   const handleAdd = () => {
     const newItem = { ...initialItemData, id: crypto.randomUUID() };
@@ -28,13 +29,38 @@ export function ExperienceSection({
   return (
     <div className="experience-section">
       {items.map((item) => (
-        <ExperienceItem
+        <AccordionItem
           key={item.id}
-          item={item}
-          fields={fields}
-          onDelete={handleDelete}
-          onUpdate={handleChange}
-        />
+          title={getTitleFromItem(item)}
+          onDelete={() => handleDelete(item.id)}
+        >
+          {fields.map((field) => (
+            <div key={field.name} className="form-group">
+              <label htmlFor={`${item.id}-${field.name}`}>{field.label}</label>
+              {field.type === 'textarea' ? (
+                <textarea
+                  id={`${item.id}-${field.name}`}
+                  placeholder={field.label}
+                  value={item[field.name]}
+                  onChange={(e) =>
+                    handleChange(item.id, field.name, e.target.value)
+                  }
+                  rows="4"
+                />
+              ) : (
+                <input
+                  type={field.type}
+                  id={`${item.id}-${field.name}`}
+                  placeholder={field.label}
+                  value={item[field.name]}
+                  onChange={(e) =>
+                    handleChange(item.id, field.name, e.target.value)
+                  }
+                />
+              )}
+            </div>
+          ))}
+        </AccordionItem>
       ))}
 
       <button onClick={handleAdd} className="add-button">
