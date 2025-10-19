@@ -67,7 +67,7 @@ function App() {
       ...prevData,
       [section]: newData,
     }));
-    console.log(`Updated ${section}:`, newData);
+    // console.log(`Updated ${section}:`, newData);
   };
 
   const educationFields = [
@@ -96,7 +96,19 @@ function App() {
     return item.company || item.position || 'New Work Experience';
   };
 
-  console.log('Current CV Data:', data.education);
+  const projectsFields = [
+    { name: 'name', label: 'Project Name', type: 'text' },
+    { name: 'website', label: 'Website', type: 'text' },
+    { name: 'sourceCode', label: 'Source Code', type: 'text' },
+    { name: 'description', label: 'Description', type: 'textarea' },
+    { name: 'technologies', label: 'Technologies', type: 'text' },
+  ];
+
+  const getProjectTitle = (item) => {
+    return item.name || 'New Project';
+  };
+
+  // console.log('Current CV Data:', data.education);
 
   return (
     <>
@@ -161,6 +173,26 @@ function App() {
                 handleSectionUpdate('workExperience', newData)
               }
               getTitleFromItem={getWorkTitle}
+            />
+          </AccordionSection>
+          {/* Projects */}
+          <AccordionSection icon="projects" title="Projects">
+            <ExperienceSection
+              items={data.projects}
+              initialItemData={{
+                id: '',
+                name: '',
+                website: '',
+                sourceCode: '',
+                description: '',
+                technologies: '',
+              }}
+              fields={projectsFields}
+              sectionTitle="Projects"
+              onUpdateItems={(newData) =>
+                handleSectionUpdate('projects', newData)
+              }
+              getTitleFromItem={getProjectTitle}
             />
           </AccordionSection>
         </div>
