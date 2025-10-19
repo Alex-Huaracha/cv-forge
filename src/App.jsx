@@ -101,11 +101,24 @@ function App() {
     { name: 'website', label: 'Website', type: 'text' },
     { name: 'sourceCode', label: 'Source Code', type: 'text' },
     { name: 'description', label: 'Description', type: 'textarea' },
-    { name: 'technologies', label: 'Technologies', type: 'text' },
+    {
+      name: 'technologies',
+      label: 'Technologies (comma separated)',
+      type: 'text',
+    },
   ];
 
   const getProjectTitle = (item) => {
     return item.name || 'New Project';
+  };
+
+  const technicalSkillsFields = [
+    { name: 'title', label: 'Skill Title', type: 'text' },
+    { name: 'skills', label: 'Skills (comma separated)', type: 'text' },
+  ];
+
+  const getTechnicalSkillsTitle = (item) => {
+    return item.title || 'New Technical Skills';
   };
 
   // console.log('Current CV Data:', data.education);
@@ -193,6 +206,23 @@ function App() {
                 handleSectionUpdate('projects', newData)
               }
               getTitleFromItem={getProjectTitle}
+            />
+          </AccordionSection>
+          {/* Technical Skills */}
+          <AccordionSection icon="skills" title="Technical Skills">
+            <ExperienceSection
+              items={data.technicalSkills}
+              initialItemData={{
+                id: '',
+                title: '',
+                skills: '',
+              }}
+              fields={technicalSkillsFields}
+              sectionTitle="Technical Skills"
+              onUpdateItems={(newData) =>
+                handleSectionUpdate('technicalSkills', newData)
+              }
+              getTitleFromItem={getTechnicalSkillsTitle}
             />
           </AccordionSection>
         </div>
