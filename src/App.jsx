@@ -23,7 +23,7 @@ function App() {
         id: crypto.randomUUID(),
         university: '',
         degree: '',
-        descriptions: [''],
+        description: [''],
         startDate: '',
         endDate: '',
         location: '',
@@ -35,7 +35,7 @@ function App() {
         id: crypto.randomUUID(),
         company: '',
         position: '',
-        descriptions: [''],
+        description: [''],
         startDate: '',
         endDate: '',
         location: '',
@@ -48,7 +48,7 @@ function App() {
         name: '',
         website: '',
         sourceCode: '',
-        descriptions: [''],
+        description: [''],
         technologies: '',
       },
     ],
@@ -73,7 +73,7 @@ function App() {
   const educationFields = [
     { name: 'university', label: 'School', type: 'text' },
     { name: 'degree', label: 'Course', type: 'text' },
-    { name: 'descriptions', label: 'Description', type: 'textarea' },
+    { name: 'description', label: 'Description', type: 'textarea' },
     { name: 'startDate', label: 'Start Date', type: 'text' },
     { name: 'endDate', label: 'End Date', type: 'text' },
     { name: 'location', label: 'Location', type: 'text' },
@@ -83,13 +83,18 @@ function App() {
     return item.university || item.degree || 'New Education';
   };
 
-  // const workFields = [
-  //   { name: 'company', label: 'Company', type: 'text' },
-  //   { name: 'position', label: 'Position Title', type: 'text' },
-  //   { name: 'startDate', label: 'Start Date', type: 'text' },
-  //   { name: 'endDate', label: 'End Date', type: 'text' },
-  //   { name: 'location', label: 'Location', type: 'text' },
-  // ];
+  const workFields = [
+    { name: 'company', label: 'Company', type: 'text' },
+    { name: 'position', label: 'Position', type: 'text' },
+    { name: 'description', label: 'Description', type: 'textarea' },
+    { name: 'startDate', label: 'Start Date', type: 'text' },
+    { name: 'endDate', label: 'End Date', type: 'text' },
+    { name: 'location', label: 'Location', type: 'text' },
+  ];
+
+  const getWorkTitle = (item) => {
+    return item.company || item.position || 'New Work Experience';
+  };
 
   console.log('Current CV Data:', data.education);
 
@@ -135,6 +140,27 @@ function App() {
                 handleSectionUpdate('education', newData)
               }
               getTitleFromItem={getEducationTitle}
+            />
+          </AccordionSection>
+          {/* Work Experience */}
+          <AccordionSection icon="work" title="Work Experience">
+            <ExperienceSection
+              items={data.workExperience}
+              initialItemData={{
+                id: '',
+                company: '',
+                position: '',
+                description: '',
+                startDate: '',
+                endDate: '',
+                location: '',
+              }}
+              fields={workFields}
+              sectionTitle="Work Experience"
+              onUpdateItems={(newData) =>
+                handleSectionUpdate('workExperience', newData)
+              }
+              getTitleFromItem={getWorkTitle}
             />
           </AccordionSection>
         </div>
