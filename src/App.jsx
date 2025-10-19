@@ -4,63 +4,14 @@ import {
   AccordionSection,
   PersonalInfo,
   ExperienceSection,
+  ResumePreview,
 } from './components';
+import { defaultData } from './default-data';
 
 function App() {
-  const [data, setData] = useState({
-    personalInfo: {
-      firstName: '',
-      lastName: '',
-      phone: '',
-      email: '',
-      linkedin: '',
-      github: '',
-      portfolio: '',
-    },
+  const [data, setData] = useState(defaultData);
 
-    education: [
-      {
-        id: crypto.randomUUID(),
-        university: '',
-        degree: '',
-        description: '',
-        startDate: '',
-        endDate: '',
-        location: '',
-      },
-    ],
-
-    workExperience: [
-      {
-        id: crypto.randomUUID(),
-        company: '',
-        position: '',
-        description: '',
-        startDate: '',
-        endDate: '',
-        location: '',
-      },
-    ],
-
-    projects: [
-      {
-        id: crypto.randomUUID(),
-        name: '',
-        website: '',
-        sourceCode: '',
-        description: '',
-        technologies: '',
-      },
-    ],
-
-    technicalSkills: [
-      {
-        id: crypto.randomUUID(),
-        title: '',
-        skills: '',
-      },
-    ],
-  });
+  console.log('App data state:', data);
 
   const handleSectionUpdate = (section, newData) => {
     setData((prevData) => ({
@@ -227,8 +178,10 @@ function App() {
           </AccordionSection>
         </div>
 
+        {/* Resume Preview */}
         <div className="cv-preview">
-          {/* <CVPreview personalInfo={personalData} /> */}
+          <ResumePreview data={data} />
+          <div className="preview-size">A4 preview</div>
         </div>
       </div>
       {/* Footer */}
