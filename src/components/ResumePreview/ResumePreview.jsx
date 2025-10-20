@@ -1,7 +1,6 @@
 import './ResumePreview.css';
 
 export function ResumePreview({ data }) {
-  // Helper function para convertir descripción a lista
   const renderDescriptionList = (description) => {
     if (!description || description.trim() === '') return null;
 
@@ -21,7 +20,6 @@ export function ResumePreview({ data }) {
     );
   };
 
-  // Helper para formatear tecnologías como lista inline
   const renderTechnologies = (technologies) => {
     if (!technologies || technologies.trim() === '') return null;
 
@@ -32,7 +30,7 @@ export function ResumePreview({ data }) {
 
     if (techList.length === 0) return null;
 
-    return techList.join(', ');
+    return techList.join(' | ');
   };
 
   const { personalInfo, education, workExperience, projects, technicalSkills } =
@@ -200,41 +198,42 @@ export function ResumePreview({ data }) {
                     <div className="entry-left">
                       <h3 className="entry-title">
                         {proj.name}
-                        {proj.technologies && (
-                          <span className="tech-stack">
-                            {' '}
-                            | {renderTechnologies(proj.technologies)}
+                        {(proj.website || proj.sourceCode) && (
+                          <span className="project-links">
+                            {' | '}
+                            {proj.website && (
+                              <a
+                                href={proj.website}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                Website
+                              </a>
+                            )}
+                            {proj.sourceCode && (
+                              <>
+                                {proj.website && (
+                                  <span className="separator">|</span>
+                                )}
+                                <a
+                                  href={proj.sourceCode}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  Source Code
+                                </a>
+                              </>
+                            )}
                           </span>
                         )}
                       </h3>
-                      <div className="project-links">
-                        {proj.website && (
-                          <a
-                            href={proj.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Website
-                          </a>
-                        )}
-                        {proj.sourceCode && (
-                          <>
-                            {proj.website && (
-                              <span className="separator">|</span>
-                            )}
-                            <a
-                              href={proj.sourceCode}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Source Code
-                            </a>
-                          </>
-                        )}
-                      </div>
                     </div>
                     <div className="entry-right">
-                      {/* Proyectos generalmente no tienen fechas en este formato */}
+                      {proj.technologies && (
+                        <span className="tech-stack">
+                          {renderTechnologies(proj.technologies)}
+                        </span>
+                      )}
                     </div>
                   </div>
                   {renderDescriptionList(proj.description)}

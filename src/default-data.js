@@ -63,7 +63,7 @@ export const defaultData = {
       sourceCode: 'https://github.com/Alex-Huaracha/expense-tracker-api',
       description:
         'RESTful API for tracking personal expenses with user authentication, transaction categories, and monthly reports. Includes unit tests and Docker setup for local development.',
-      technologies: 'Django REST Framework, PostgreSQL, Docker, pytest',
+      technologies: 'Django, PostgreSQL, Docker, pytest',
     },
   ],
 

@@ -141,6 +141,35 @@
   line-height: 1.3;
 }
 
+/* Projects */
+.tech-stack {
+  font-size: 10pt;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.project-links {
+  font-size: 9pt;
+  font-weight: normal;
+  font-style: normal;
+  display: inline;
+  padding-left: 0.2em;
+}
+
+.project-links a {
+  color: #000;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.project-links a:hover {
+  text-decoration: underline;
+}
+
+.project-links .separator {
+  margin: 0 0.4em;
+}
+
 /* Technical Skills */
 .skill-entry {
   margin-bottom: 0.3em;
