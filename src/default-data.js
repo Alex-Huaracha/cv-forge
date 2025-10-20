@@ -13,7 +13,7 @@ export const defaultData = {
     {
       id: crypto.randomUUID(),
       university: 'National University of Saint Augustine',
-      degree: 'BS Computer Science',
+      degree: 'Bachelor of Computer Science',
       description:
         'Courses: Software Engineering Practice, Applied Machine Learning, Operating Systems, Computer Architecture, Model-Based Programming, Algorithms and Data Structures, Databases.',
       startDate: 'Jun 2020',
@@ -25,12 +25,24 @@ export const defaultData = {
   workExperience: [
     {
       id: crypto.randomUUID(),
-      company: 'asd',
-      position: 'asd',
-      description: 'asd',
-      startDate: 'asd',
-      endDate: 'asd',
-      location: 'ads',
+      company:
+        'Faculty of Systems Engineering, National University of Saint Augustine',
+      position: 'Backend Developer Intern',
+      description:
+        'Contributed to a software development team building a web application for streamlining software requirements documentation. \n Responsible for backend API development (Node.js, Express, TypeScript), database management (PostgreSQL, PrismaORM), and deployment to Supabase.',
+      startDate: 'Aug 2024',
+      endDate: 'Apr 2025',
+      location: 'Arequipa, Peru',
+    },
+    {
+      id: crypto.randomUUID(),
+      company: 'National University of Saint Augustine',
+      position: 'AI Research Assistant',
+      description:
+        'Collaborated on a government-funded research project to build a framework from scratch for real-time anomaly detection in transportation units. \n Implemented an LSTM-Autoencoder model using Python and AI libraries to identify anomalous data patterns.',
+      startDate: 'May 2025',
+      endDate: 'Sep 2025',
+      location: 'Arequipa, Peru',
     },
   ],
 
