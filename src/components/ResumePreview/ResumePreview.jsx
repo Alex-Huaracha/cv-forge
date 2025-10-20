@@ -155,7 +155,7 @@ export function ResumePreview({ data }) {
       {workExperience.length > 0 &&
         workExperience.some((work) => work.company || work.position) && (
           <section className="resume-section">
-            <h2 className="section-title">Experience</h2>
+            <h2 className="section-title">Work Experience</h2>
             <div className="section-content">
               {workExperience.map((work) => {
                 if (!work.company && !work.position) return null;
