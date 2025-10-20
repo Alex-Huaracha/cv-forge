@@ -81,7 +81,7 @@ export const defaultData = {
     {
       id: crypto.randomUUID(),
       title: 'Libraries/Frameworks',
-      skills: 'Django, React, Node.js, Next.js, PostgreSQL',
+      skills: 'React, Node.js, Next.js, Django, PostgreSQL',
     },
   ],
 };
