@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import html2pdf from 'html2pdf.js';
 import './App.css';
 import {
   AccordionSection,
@@ -70,6 +71,28 @@ function App() {
 
   const getTechnicalSkillsTitle = (item) => {
     return item.title || 'New Technical Skills';
+  };
+
+  const handleDownloadPDF = () => {
+    const element = document.querySelector('.resume');
+
+    const opt = {
+      margin: 0,
+      filename: `${data.personalInfo.firstName}_${data.personalInfo.lastName}_CV.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+      },
+      jsPDF: {
+        unit: 'in',
+        format: 'letter',
+        orientation: 'portrait',
+      },
+    };
+
+    html2pdf().set(opt).from(element).save();
   };
 
   // console.log('Current CV Data:', data.education);
@@ -182,12 +205,18 @@ function App() {
         <div className="cv-preview">
           <ResumePreview data={data} />
           <div className="preview-size">A4 preview</div>
+          <button className="download-btn" onClick={handleDownloadPDF}>
+            <svg className="icon" aria-hidden="true">
+              <use href="#icon-download"></use>
+            </svg>
+            Download PDF
+          </button>
         </div>
       </div>
       {/* Footer */}
       <footer className="footer">
         <p>
-          &copy; 2024 Designed and developed by{' '}
+          &copy; 2025 Designed and developed by{' '}
           <a
             href="https://github.com/Alex-Huaracha"
             target="_blank"
