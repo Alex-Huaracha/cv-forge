@@ -73,8 +73,9 @@ function App() {
     return item.title || 'New Technical Skills';
   };
 
-  const handleDownloadPDF = () => {
+  const handleDownloadPDF = async () => {
     const element = document.querySelector('.resume');
+    if (!element) return;
 
     const opt = {
       margin: 0,
@@ -92,7 +93,15 @@ function App() {
       },
     };
 
-    html2pdf().set(opt).from(element).save();
+    element.classList.add('resume-printing');
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    try {
+      await html2pdf().set(opt).from(element).save();
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    } finally {
+      element.classList.remove('resume-printing');
+    }
   };
 
   // console.log('Current CV Data:', data.education);
