@@ -23,12 +23,12 @@
   /* Letter Dimension */
   width: 8.5in;
   height: 11in;
+  padding: 0.5in 0.75in;
 
   background: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
   color: var(--resume-text-color);
   font-size: 11pt;
-  padding: 0.5in 0.75in;
   overflow: hidden;
   transform-origin: top center;
   flex-shrink: 0;
@@ -41,8 +41,28 @@
   margin-bottom: 0.5in;
 }
 
-.separator {
-  margin-inline: 4px;
+.resume-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  font-size: 10pt;
+  border: 2px solid var(--resume-text-color);
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-icon {
+  width: 0.9em;
+  height: 0.9em;
+  flex-shrink: 0;
 }
 
 /* Mobile - Zoom out */

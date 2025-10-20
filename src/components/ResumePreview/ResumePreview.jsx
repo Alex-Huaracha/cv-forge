@@ -47,11 +47,24 @@ export function ResumePreview({ data }) {
             {personalInfo.firstName} {personalInfo.lastName}
           </h1>
           <div className="resume-contact">
-            {personalInfo.phone && <span>{personalInfo.phone}</span>}
+            {personalInfo.phone && (
+              <span className="contact-item">
+                <svg className="contact-icon" aria-hidden="true">
+                  <use href="#icon-phone"></use>
+                </svg>
+                {personalInfo.phone}
+              </span>
+            )}
             {personalInfo.email && (
               <>
                 <span className="separator">|</span>
-                <a href={`mailto:${personalInfo.email}`}>
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="contact-item"
+                >
+                  <svg className="contact-icon" aria-hidden="true">
+                    <use href="#icon-email"></use>
+                  </svg>
                   {personalInfo.email}
                 </a>
               </>
@@ -63,7 +76,11 @@ export function ResumePreview({ data }) {
                   href={personalInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="contact-item"
                 >
+                  <svg className="contact-icon" aria-hidden="true">
+                    <use href="#icon-linkedin-resume"></use>
+                  </svg>
                   LinkedIn
                 </a>
               </>
@@ -75,7 +92,11 @@ export function ResumePreview({ data }) {
                   href={personalInfo.github}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="contact-item"
                 >
+                  <svg className="contact-icon" aria-hidden="true">
+                    <use href="#icon-github"></use>
+                  </svg>
                   GitHub
                 </a>
               </>
@@ -87,7 +108,11 @@ export function ResumePreview({ data }) {
                   href={personalInfo.portfolio}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="contact-item"
                 >
+                  <svg className="contact-icon" aria-hidden="true">
+                    <use href="#icon-portfolio"></use>
+                  </svg>
                   Portfolio
                 </a>
               </>
