@@ -163,19 +163,19 @@ export function ResumePreview({ data }) {
                   <div key={work.id} className="resume-entry">
                     <div className="entry-header">
                       <div className="entry-left">
-                        <h3 className="entry-title">{work.position}</h3>
-                        <p className="entry-subtitle">{work.company}</p>
+                        <h3 className="entry-title">{work.company}</h3>
+                        <p className="entry-subtitle">{work.position}</p>
                       </div>
                       <div className="entry-right">
-                        {work.location && (
-                          <p className="entry-location">{work.location}</p>
-                        )}
                         {(work.startDate || work.endDate) && (
                           <p className="entry-date">
                             {work.startDate}{' '}
                             {work.startDate && work.endDate && '–'}{' '}
                             {work.endDate}
                           </p>
+                        )}
+                        {work.location && (
+                          <p className="entry-location">{work.location}</p>
                         )}
                       </div>
                     </div>
