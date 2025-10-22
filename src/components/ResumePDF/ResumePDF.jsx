@@ -88,6 +88,14 @@ const styles = StyleSheet.create({
   bulletText: {
     flex: 1,
   },
+  projectLinks: {
+    fontSize: 11,
+    fontFamily: 'Times-Italic',
+  },
+  techStack: {
+    fontSize: 11,
+    fontFamily: 'Times-Bold',
+  },
   skillEntry: {
     fontSize: 11,
     marginBottom: 4,
@@ -114,6 +122,16 @@ export function ResumePDF({ data }) {
         <Text style={styles.bulletText}>{item}</Text>
       </View>
     ));
+  };
+
+  const renderTechnologies = (technologies) => {
+    if (!technologies || technologies.trim() === '') return null;
+    const techList = technologies
+      .split(',')
+      .map((tech) => tech.trim())
+      .filter((tech) => tech.length > 0);
+    if (techList.length === 0) return null;
+    return techList.join(' | ');
   };
 
   return (
@@ -231,16 +249,33 @@ export function ResumePDF({ data }) {
             {projects.map((proj) => (
               <View key={proj.id} style={{ marginBottom: 8 }}>
                 <View style={styles.entryHeader}>
-                  <View style={{ flex: 1 }}>
+                  <View style={styles.entryLeft}>
                     <Text style={styles.entryTitle}>
                       {proj.name}
-                      {proj.technologies && (
-                        <Text style={{ fontFamily: 'Times-Italic' }}>
-                          {' '}
-                          | {proj.technologies}
+                      {(proj.website || proj.sourceCode) && (
+                        <Text style={styles.projectLinks}>
+                          {' | '}
+                          {proj.website && (
+                            <Link src={proj.website} style={styles.link}>
+                              Website
+                            </Link>
+                          )}
+                          {proj.website && proj.sourceCode && ' | '}
+                          {proj.sourceCode && (
+                            <Link src={proj.sourceCode} style={styles.link}>
+                              Source Code
+                            </Link>
+                          )}
                         </Text>
                       )}
                     </Text>
+                  </View>
+                  <View style={styles.entryRight}>
+                    {proj.technologies && (
+                      <Text style={styles.techStack}>
+                        {renderTechnologies(proj.technologies)}
+                      </Text>
+                    )}
                   </View>
                 </View>
                 {renderBullets(proj.description)}
