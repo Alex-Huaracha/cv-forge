@@ -2,6 +2,8 @@
 
 A modern CV/resume builder built with React and Vite. Create, edit, and download professional resumes in PDF format.
 
+![CV Forge Demo](https://github.com/user-attachments/assets/d1b7bd5f-c7fc-4003-94f3-e8d3f5e0ccfd)
+
 ## Features
 
 - **Real-time preview** - See changes as you type
