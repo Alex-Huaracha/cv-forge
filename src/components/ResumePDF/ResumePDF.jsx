@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: 'Times-Bold',
     marginBottom: 4,
-    textTransform: 'uppercase',
   },
   contact: {
     fontSize: 11,
@@ -54,12 +53,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   entryRight: {
-    alignItems: 'flex-end', // 👈 Agrega esto
-    minWidth: 100, // 👈 Agrega un ancho mínimo
+    alignItems: 'flex-end',
+    minWidth: 100,
   },
   entryTitle: {
     fontSize: 12,
     fontFamily: 'Times-Bold',
+    marginBottom: 2,
   },
   entrySubtitle: {
     fontSize: 11,
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontFamily: 'Times-Bold',
     textAlign: 'right',
-    marginBottom: 1,
+    marginBottom: 2,
   },
   entryLocation: {
     fontSize: 9,
@@ -80,6 +80,13 @@ const styles = StyleSheet.create({
     fontSize: 11,
     marginLeft: 15,
     marginBottom: 2,
+    flexDirection: 'row',
+  },
+  bulletSymbol: {
+    width: 10,
+  },
+  bulletText: {
+    flex: 1,
   },
   skillEntry: {
     fontSize: 11,
@@ -102,9 +109,10 @@ export function ResumePDF({ data }) {
     if (!description) return null;
     const items = description.split('\n').filter((line) => line.trim());
     return items.map((item, index) => (
-      <Text key={index} style={styles.bulletPoint}>
-        • {item}
-      </Text>
+      <View key={index} style={styles.bulletPoint}>
+        <Text style={styles.bulletSymbol}>•</Text>
+        <Text style={styles.bulletText}>{item}</Text>
+      </View>
     ));
   };
 
@@ -174,8 +182,6 @@ export function ResumePDF({ data }) {
                     <Text style={styles.entrySubtitle}>{edu.degree}</Text>
                   </View>
                   <View style={styles.entryRight}>
-                    {' '}
-                    {/* 👈 Usa el estilo */}
                     <Text style={styles.entryDate}>
                       {edu.startDate} – {edu.endDate}
                     </Text>
