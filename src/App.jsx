@@ -1,13 +1,16 @@
 import { useState } from 'react';
-import html2pdf from 'html2pdf.js';
+// import html2pdf from 'html2pdf.js';
 import './App.css';
 import {
   AccordionSection,
   PersonalInfo,
   ExperienceSection,
   ResumePreview,
+  ResumePDF,
 } from './components';
 import { defaultData } from './default-data';
+
+import { pdf } from '@react-pdf/renderer';
 
 function App() {
   const [data, setData] = useState(defaultData);
@@ -73,34 +76,49 @@ function App() {
     return item.title || 'New Technical Skills';
   };
 
+  // const handleDownloadPDF = async () => {
+  //   const element = document.querySelector('.resume');
+  //   if (!element) return;
+
+  //   const opt = {
+  //     margin: 0,
+  //     filename: `${data.personalInfo.firstName}_${data.personalInfo.lastName}_CV.pdf`,
+  //     image: { type: 'jpeg', quality: 0.98 },
+  //     html2canvas: {
+  //       scale: 2,
+  //       useCORS: true,
+  //       logging: false,
+  //     },
+  //     jsPDF: {
+  //       unit: 'in',
+  //       format: 'letter',
+  //       orientation: 'portrait',
+  //     },
+  //   };
+
+  //   element.classList.add('resume-printing');
+  //   await new Promise((resolve) => setTimeout(resolve, 50));
+  //   try {
+  //     await html2pdf().set(opt).from(element).save();
+  //   } catch (error) {
+  //     console.error('Error generating PDF:', error);
+  //   } finally {
+  //     element.classList.remove('resume-printing');
+  //   }
+  // };
+
   const handleDownloadPDF = async () => {
-    const element = document.querySelector('.resume');
-    if (!element) return;
-
-    const opt = {
-      margin: 0,
-      filename: `${data.personalInfo.firstName}_${data.personalInfo.lastName}_CV.pdf`,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        logging: false,
-      },
-      jsPDF: {
-        unit: 'in',
-        format: 'letter',
-        orientation: 'portrait',
-      },
-    };
-
-    element.classList.add('resume-printing');
-    await new Promise((resolve) => setTimeout(resolve, 50));
     try {
-      await html2pdf().set(opt).from(element).save();
+      const blob = await pdf(<ResumePDF data={data} />).toBlob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${data.personalInfo.firstName}_${data.personalInfo.lastName}_CV.pdf`;
+      link.click();
+      URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error generating PDF:', error);
-    } finally {
-      element.classList.remove('resume-printing');
+      alert('Error al generar el PDF. Por favor intenta de nuevo.');
     }
   };
 
