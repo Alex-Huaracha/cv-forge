@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 12,
-    fontFamily: 'Times-Bold',
+
     textTransform: 'uppercase',
     marginBottom: 5,
     paddingBottom: 2,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   bulletPoint: {
     fontSize: 11,
-    marginLeft: 15,
+    marginLeft: 20,
     marginBottom: 2,
     flexDirection: 'row',
   },
@@ -204,8 +204,8 @@ export function ResumePDF({ data }) {
               <View key={work.id} style={{ marginBottom: 8 }}>
                 <View style={styles.entryHeader}>
                   <View style={styles.entryLeft}>
-                    <Text style={styles.entryTitle}>{work.company}</Text>
-                    <Text style={styles.entrySubtitle}>{work.position}</Text>
+                    <Text style={styles.entryTitle}>{work.position}</Text>
+                    <Text style={styles.entrySubtitle}>{work.company}</Text>
                   </View>
                   <View style={styles.entryRight}>
                     {' '}
