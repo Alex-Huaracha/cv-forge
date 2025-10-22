@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
   },
   section: {
-    marginBottom: 12,
+    marginBottom: 0,
   },
   sectionTitle: {
     fontSize: 9.5,
@@ -42,6 +42,9 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
     borderBottom: '1pt solid black',
     letterSpacing: 0.5,
+    marginLeft: -10,
+    marginRight: -10,
+    paddingLeft: 0,
   },
   sectionTitleFirstLetter: {
     fontSize: 12.5,
