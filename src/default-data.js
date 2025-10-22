@@ -37,7 +37,7 @@ export const defaultData = {
     {
       id: crypto.randomUUID(),
       company: 'National University of Saint Augustine',
-      position: 'AI Research Assistant',
+      position: 'Artificial Intelligence Research Assistant ',
       description:
         'Collaborated on a government-funded research project to build a framework from scratch for real-time anomaly detection in transportation units. \n Implemented an LSTM-Autoencoder model using Python and AI libraries to identify anomalous data patterns.',
       startDate: 'May 2025',
