@@ -36,13 +36,15 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   sectionTitle: {
-    fontSize: 12,
-
+    fontSize: 9.5,
     textTransform: 'uppercase',
     marginBottom: 5,
     paddingBottom: 2,
     borderBottom: '1pt solid black',
-    letterSpacing: 1,
+    letterSpacing: 0.5,
+  },
+  sectionTitleFirstLetter: {
+    fontSize: 12.5,
   },
   entryHeader: {
     flexDirection: 'row',
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   entryLocation: {
-    fontSize: 9,
+    fontSize: 10,
     fontFamily: 'Times-Italic',
     textAlign: 'right',
   },
@@ -134,6 +136,27 @@ export function ResumePDF({ data }) {
     return techList.join(' | ');
   };
 
+  const renderSectionTitle = (title) => {
+    const words = title.split(' ');
+
+    return (
+      <Text style={styles.sectionTitle}>
+        {words.map((word, index) => {
+          const firstLetter = word.charAt(0).toUpperCase();
+          const restOfWord = word.slice(1).toUpperCase();
+
+          return (
+            <Text key={index}>
+              <Text style={styles.sectionTitleFirstLetter}>{firstLetter}</Text>
+              {restOfWord}
+              {index < words.length - 1 && ' '}{' '}
+            </Text>
+          );
+        })}
+      </Text>
+    );
+  };
+
   return (
     <Document>
       <Page size="LETTER" style={styles.page}>
@@ -191,7 +214,7 @@ export function ResumePDF({ data }) {
         {/* Education */}
         {education.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Education</Text>
+            {renderSectionTitle('Education')}
             {education.map((edu) => (
               <View key={edu.id} style={{ marginBottom: 8 }}>
                 <View style={styles.entryHeader}>
@@ -217,7 +240,7 @@ export function ResumePDF({ data }) {
         {/* Work Experience */}
         {workExperience.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Work Experience</Text>
+            {renderSectionTitle('Work Experience')}
             {workExperience.map((work) => (
               <View key={work.id} style={{ marginBottom: 8 }}>
                 <View style={styles.entryHeader}>
@@ -226,8 +249,6 @@ export function ResumePDF({ data }) {
                     <Text style={styles.entrySubtitle}>{work.company}</Text>
                   </View>
                   <View style={styles.entryRight}>
-                    {' '}
-                    {/* 👈 Usa el estilo */}
                     <Text style={styles.entryDate}>
                       {work.startDate} – {work.endDate}
                     </Text>
@@ -245,7 +266,7 @@ export function ResumePDF({ data }) {
         {/* Projects */}
         {projects.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Projects</Text>
+            {renderSectionTitle('Projects')}
             {projects.map((proj) => (
               <View key={proj.id} style={{ marginBottom: 8 }}>
                 <View style={styles.entryHeader}>
@@ -287,10 +308,10 @@ export function ResumePDF({ data }) {
         {/* Technical Skills */}
         {technicalSkills.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Technical Skills</Text>
+            {renderSectionTitle('Technical Skills')}
             {technicalSkills.map((skill) => (
               <Text key={skill.id} style={styles.skillEntry}>
-                <Text style={styles.skillTitle}>{skill.title}:</Text>{' '}
+                <Text style={styles.skillTitle}>{skill.title}:</Text>
                 {skill.skills}
               </Text>
             ))}
