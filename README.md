@@ -18,7 +18,7 @@ A modern CV/resume builder built with React and Vite. Create, edit, and download
 
 ## Demo
 
-[Live Demo](https://cv-forge-q8ka.vercel.app/)
+[Live Demo](https://cv-forge-one.vercel.app/)
 
 ## Tech Stack
 
