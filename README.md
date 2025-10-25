@@ -31,7 +31,7 @@ A modern CV/resume builder built with React and Vite. Create, edit, and download
 
 ```zsh
 # Clone the repository
-git clone https://github.com/yourusername/cv-forge.git
+git clone https://github.com/Alex-Huaracha/cv-forge.git
 
 # Navigate to project directory
 cd cv-forge
